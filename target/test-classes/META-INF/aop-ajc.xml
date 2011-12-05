@@ -1,0 +1,9 @@
+<aspectj>
+<aspects>
+<aspect name="cz.shmoula.ukazbobra.domain.ImageIntegrationTest_Roo_Configurable"/>
+<aspect name="cz.shmoula.ukazbobra.domain.ImageDataOnDemand_Roo_Configurable"/>
+<aspect name="cz.shmoula.ukazbobra.domain.ImageDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="cz.shmoula.ukazbobra.domain.ImageIntegrationTest_Roo_IntegrationTest"/>
+</aspects>
+</aspectj>
+

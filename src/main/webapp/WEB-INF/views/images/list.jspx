@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_cz_shmoula_ukazbobra_domain_Image" items="${images}" z="bo3m2rKJZmouA0aDEbWQwiwm9iw=">
+        <table:table data="${images}" id="l_cz_shmoula_ukazbobra_domain_Image" path="/images" z="VGdhJhz+DQhwpu7GZwQafoAiHQc=">
+            <table:column id="c_cz_shmoula_ukazbobra_domain_Image_filename" property="filename" z="+umuNlY0z6yzVPKPumP7DPM9DgE="/>
+            <table:column date="true" dateTimePattern="${image_uploaded_date_format}" id="c_cz_shmoula_ukazbobra_domain_Image_uploaded" property="uploaded" z="vnoZaD5Kd3nM0zmv3yZHbxVX9ss="/>
+            <table:column id="c_cz_shmoula_ukazbobra_domain_Image_filesize" property="filesize" z="YdGDe+QVcCWDswzmga4nAQ0d4SY="/>
+            <table:column id="c_cz_shmoula_ukazbobra_domain_Image_content" property="content" z="1qQWgf2GMKBlw/yIryRvi0KyupA="/>
+            <table:column id="c_cz_shmoula_ukazbobra_domain_Image_url" property="url" z="a6uQOeMO8a6RCiWJy7Fi7hB/QF0="/>
+            <table:column id="c_cz_shmoula_ukazbobra_domain_Image_contentType" property="contentType" z="JoDc03wj8ODCkoNVXmufPLVvFIo="/>
+        </table:table>
+    </page:list>
+</div>

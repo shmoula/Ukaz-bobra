@@ -1,0 +1,11 @@
+<aspectj>
+<aspects>
+<aspect name="cz.shmoula.ukazbobra.domain.Image_Roo_ToString"/>
+<aspect name="cz.shmoula.ukazbobra.domain.Image_Roo_Configurable"/>
+<aspect name="cz.shmoula.ukazbobra.domain.Image_Roo_JavaBean"/>
+<aspect name="cz.shmoula.ukazbobra.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="cz.shmoula.ukazbobra.domain.Image_Roo_Entity"/>
+<aspect name="cz.shmoula.ukazbobra.web.ImageController_Roo_Controller"/>
+</aspects>
+</aspectj>
+

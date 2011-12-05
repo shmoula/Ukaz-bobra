@@ -1,0 +1,10 @@
+Zdrojaky k aplikaci ukazbobra
+bezi na http://ukazbobra.cloudfoundry.com
+
+Jednalo se o hec pet minut pred odchodem z prace, kdy jsem prohlasil, ze "to do rana napisu".
+Ukazbobra je anonymni hosting obrazku, kde by mely uzivatelky uploadovat svoje bobry :-D.
+
+TODO: hlidat content type, velikosti, hotlinking a mraky dalsich veci, tahle faze je minimal viable product.
+
+Slo o to zkusit, jestli se da na CloudFoundry vytvorit v databazi blob a neco do nej nacpat.
+Na anonymnich uzivatelich ted bude vyzkouset, jaky objem dat to snese.

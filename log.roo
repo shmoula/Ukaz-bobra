@@ -1,0 +1,26 @@
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-05 20:44:27
+project --topLevelPackage cz.shmoula.ukazbobra --projectName ukazbobra
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY 
+entity --class ~.domain.Image --testAutomatically 
+field string filename --notNull 
+field date --fieldName uploaded --type java.util.Date
+// [failed] field number --fieldName size --type long
+field number --fieldName filesize --type long
+controller all --package ~.web
+logging setup --level INFO --package ALL_SPRING 
+perform tests
+perform eclipse
+perform eclipse
+// [failed] entity --class ~.domain.Image --testAutomatically 
+finder list
+perform eclipse
+perform eclipse
+perform eclipse
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-05 21:34:24
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-05 23:32:08
+persistence setup --provider HIBERNATE --database MYSQL 
+perform eclipse
+perform package
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-05 23:34:45

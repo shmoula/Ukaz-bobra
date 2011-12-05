@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_cz_shmoula_ukazbobra_domain_Image" object="${image}" path="/images" z="FfCaTMPV7yguXEJ8UuOewmvkQRg=">
+        <field:display field="filename" id="s_cz_shmoula_ukazbobra_domain_Image_filename" object="${image}" z="kXBnpp0i9B034kWEVNHhvVGtDj4="/>
+        <field:display date="true" dateTimePattern="${image_uploaded_date_format}" field="uploaded" id="s_cz_shmoula_ukazbobra_domain_Image_uploaded" object="${image}" z="p//V07WkBqNlrjHtk0v3G9OaEG8="/>
+        <field:display field="filesize" id="s_cz_shmoula_ukazbobra_domain_Image_filesize" object="${image}" z="U0e8Ahnh7ePsUwUyQ+bf5ttfOms="/>
+        <!-- <field:display field="content" id="s_cz_shmoula_ukazbobra_domain_Image_content" object="${image}" z="ExzXzJ2VjluxNiTAkFysj5QM5ek="/> -->
+        <field:display field="url" id="s_cz_shmoula_ukazbobra_domain_Image_url" object="${image}" z="Iax0XE8BjIIpHfBLX2cliSL3vd8="/>
+        <field:display field="contentType" id="s_cz_shmoula_ukazbobra_domain_Image_contentType" object="${image}" z="rIL16aLaJbH/tHVFjNT5YOYMm4I="/>
+        <img src="show/1" width="500"/>
+        <!-- <field:frame field="url" id="s_cz_shmoula_ukazbobra_domain_Image_content" object="${image}" render="true" z="?"/> -->
+        <field:display field="content" id="s_cz_shmoula_ukazbobra_domain_Image_content" object="${image}" z="ExzXzJ2VjluxNiTAkFysj5QM5ek="/>
+    </page:show>
+</div>
