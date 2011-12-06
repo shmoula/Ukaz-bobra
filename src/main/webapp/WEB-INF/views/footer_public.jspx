@@ -10,12 +10,15 @@
     </a>
   </span>
   
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  
-  <spring:url value="http://www.shmoula.cz" var="shmoula"/>
+  &#160;&#160;&#160;&#160;
   <span>
-    <a href="${shmoula}">www.shmoula.cz</a>
-  </span>  
+    <a href="http://www.shmoula.cz">www.shmoula.cz</a>
+  </span>
+  
+  &#160;&#160;&#160;&#160;
+  <span>
+    <a href="https://github.com/shmoula/Ukaz-bobra">sourcecode@github</a>
+  </span>
 
   <spring:url value="/resources/images/springsource-logo.png" var="logo"/>
   <spring:message code="global_sponsored" htmlEscape="false" var="sponsored"/>

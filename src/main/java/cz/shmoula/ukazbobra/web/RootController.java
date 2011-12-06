@@ -31,6 +31,7 @@ import cz.shmoula.ukazbobra.domain.Image;
 @RequestMapping("/")
 @Controller
 public class RootController {
+	private static final int MAX_FILESIZE = 500000; // bajtu
 	
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws ServletException {
@@ -41,6 +42,7 @@ public class RootController {
 	public String index(Model model) {
 		
 		model.addAttribute("image_url", getRandomImageUrl());
+		model.addAttribute("beavers_count", Image.countImages());
 		
 		model.addAttribute("image", new Image());
         addDateTimeFormatPatterns(model);
@@ -49,22 +51,26 @@ public class RootController {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String createdoc(@Valid Image image, BindingResult result, Model model, @RequestParam("content") MultipartFile content, HttpServletRequest request) {
-		image.setContentType(content.getContentType());
-		image.setFilename(content.getOriginalFilename());
-		image.setFilesize(content.getSize());
-		image.setUploaded(new Date());
+	public String createImage(@Valid Image image, BindingResult result, Model model, @RequestParam("content") MultipartFile content, HttpServletRequest request) {
 
 		if (!result.hasErrors()) {
-			image.persist();
-		}
-		
-		model.addAttribute("image_url", getRandomImageUrl());
-		
-		model.addAttribute("image", image);
-        addDateTimeFormatPatterns(model);
+			image.setContentType(content.getContentType());
+			image.setFilename(content.getOriginalFilename());
+			image.setFilesize(content.getSize());
+			image.setUploaded(new Date());
+			
+			if(!content.getContentType().contains("image/")) {
+				model.addAttribute("error_message", "Soubor, ktery nahravate, neni obrazek!");
+			} else if (content.getSize() > MAX_FILESIZE) {
+				model.addAttribute("error_message", "Soubor je prilis velky (max. 0.5MB)!");
+			} else {
+				image.persist();
+				model.addAttribute("info_message", "V poradku nahrano, dekujeme!");
+			}
+		} else
+			model.addAttribute("error_message", "Problem pri validaci!");
 
-		return "index";
+		return index(model);
 	}
 	
 	// TODO: tady je jenom int, pohlidat do budoucna meze

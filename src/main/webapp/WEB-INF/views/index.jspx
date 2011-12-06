@@ -2,12 +2,17 @@
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
 
+	<span class="error">${error_message}</span>
+	<span class="info">${info_message}</span>
+	
+	
     <form:multi id="fc_cz_shmoula_ukazbobra_domain_Image" modelAttribute="image" path="/save" render="${empty dependencies}" z="veX0DbuDr49S0YNnKhchjPQFNT8=">
         <field:file field="content" id="c_cz_shmoula_ukazbobra_domain_Image_content" required="true" z="wrG2sTPhuPFOu0p1ycpm1SOaI7o="/>
     </form:multi>
 
     <p><img src="${image_url}" width="500" /></p>
     
-    <p><a href="/ukazbobra/">Refresh</a></p>
+    <spring:url value="/" var="refresh"/>
+    <p><a href="${refresh}">Refresh (aka show another random of our ${beavers_count} beavers collection)</a></p>
 
 </div>
