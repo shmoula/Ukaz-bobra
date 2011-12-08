@@ -1,6 +1,7 @@
 package cz.shmoula.ukazbobra.web;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.joda.time.format.DateTimeFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +34,9 @@ import cz.shmoula.ukazbobra.domain.Image;
 @RequestMapping("/")
 @Controller
 public class RootController {
+	@Autowired
+	private MessageSource messageSource;
+	
 	private static final int MAX_FILESIZE = 500000; // bajtu
 	
 	@InitBinder
@@ -60,15 +66,15 @@ public class RootController {
 			image.setUploaded(new Date());
 			
 			if(!content.getContentType().contains("image/")) {
-				model.addAttribute("error_message", "Soubor, ktery nahravate, neni obrazek!");
+				model.addAttribute("error_message", messageSource.getMessage("string_error_not_image", null, Locale.ENGLISH));
 			} else if (content.getSize() > MAX_FILESIZE) {
-				model.addAttribute("error_message", "Soubor je prilis velky (max. 0.5MB)!");
+				model.addAttribute("error_message", messageSource.getMessage("string_error_big_file", null, Locale.ENGLISH));
 			} else {
 				image.persist();
-				model.addAttribute("info_message", "V poradku nahrano, dekujeme!");
+				model.addAttribute("info_message", messageSource.getMessage("string_info_successfully_uploaded", null, Locale.ENGLISH));
 			}
 		} else
-			model.addAttribute("error_message", "Problem pri validaci!");
+			model.addAttribute("error_message", messageSource.getMessage("string_error_validation_problem", null, Locale.ENGLISH));
 
 		return index(model);
 	}

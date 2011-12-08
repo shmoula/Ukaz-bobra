@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
 
@@ -13,6 +13,7 @@
     <p><img src="${image_url}" width="500" /></p>
     
     <spring:url value="/" var="refresh"/>
-    <p><a href="${refresh}">Refresh (aka show another random of our ${beavers_count} beavers collection)</a></p>
+    <spring:message code="string_refresh_label" var="refresh_label" htmlEscape="false" />
+    <p><a href="${refresh}">${fn:escapeXml(refresh_label)} ${beavers_count}</a></p>
 
 </div>
