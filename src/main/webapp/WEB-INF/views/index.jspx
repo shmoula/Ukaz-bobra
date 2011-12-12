@@ -10,7 +10,7 @@
         <field:file field="content" id="c_cz_shmoula_ukazbobra_domain_Image_content" required="true" z="wrG2sTPhuPFOu0p1ycpm1SOaI7o="/>
     </form:multi>
 
-    <p><img src="${image_url}" width="500" /></p>
+    <p><a href="${image_href}"><img src="${image_url}" width="500" /></a></p>
     
     <spring:url value="/" var="refresh"/>
     <spring:message code="string_refresh_label" var="refresh_label" htmlEscape="false" />

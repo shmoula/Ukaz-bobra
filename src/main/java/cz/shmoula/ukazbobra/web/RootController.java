@@ -47,8 +47,17 @@ public class RootController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
+		int randomImage = getRandomImageNumber();
 		
-		model.addAttribute("image_url", getRandomImageUrl());
+		if(randomImage == 0) {
+			model.addAttribute("image_url", "http://www.kuradomowa.com/dzieci/kolorowanki/bobr_2.jpg");
+			model.addAttribute("image_href", "#");
+		} else {
+			model.addAttribute("image_url", "images/show/" + randomImage);
+			model.addAttribute("image_href", randomImage);
+		}
+		
+		
 		model.addAttribute("beavers_count", Image.countImages());
 		
 		model.addAttribute("image", new Image());
@@ -110,18 +119,22 @@ public class RootController {
 		return "show";
 	}
 	
+	/*
+	 * Vraci nahodne ID obrazku z kolekce, pokud tam nejaky je
+	 * Pokud neni, vrati cislo 0
+	 */
 	// TODO: tady je jenom int, pohlidat do budoucna meze
-	private String getRandomImageUrl(){
+	private int getRandomImageNumber(){
 		Random randomGenerator = new Random();
 		long imagesCount = Image.countImages();
 		
 		if(imagesCount == 0)
-			return "http://www.kuradomowa.com/dzieci/kolorowanki/bobr_2.jpg";
+			return 0;
 		
 		int random = randomGenerator.nextInt((int)imagesCount);
 		random += 1;
 		
-		return "images/show/" + random;
+		return random;
 	}
 	
 	void addDateTimeFormatPatterns(Model uiModel) {

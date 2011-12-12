@@ -21,6 +21,9 @@
     		.info {
     			color: #7DB223;
     		}
+    		img {
+    			border-style: none;
+			}
   		</style>
 	</head>
 	
