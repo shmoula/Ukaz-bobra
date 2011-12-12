@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,15 @@ public class RootController {
 		return "index";
 	}
 	
+	/**
+	 * Nahrani noveho obrazku
+	 * @param image
+	 * @param result
+	 * @param model
+	 * @param content
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String createImage(@Valid Image image, BindingResult result, Model model, @RequestParam("content") MultipartFile content, HttpServletRequest request) {
 
@@ -65,6 +75,7 @@ public class RootController {
 			image.setFilesize(content.getSize());
 			image.setUploaded(new Date());
 			
+			// validace kontentu a velikosti
 			if(!content.getContentType().contains("image/")) {
 				model.addAttribute("error_message", messageSource.getMessage("string_error_not_image", null, Locale.ENGLISH));
 			} else if (content.getSize() > MAX_FILESIZE) {
@@ -76,7 +87,27 @@ public class RootController {
 		} else
 			model.addAttribute("error_message", messageSource.getMessage("string_error_validation_problem", null, Locale.ENGLISH));
 
-		return index(model);
+		// primo zobrazim nahrany obrazek
+		return show(image.getId(), model);
+	}
+	
+	/**
+	 * Zobrazeni konkretniho obrazku - kvuli sdileni a tak :-)
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String show(@PathVariable("id") Long id, Model model) {
+		Image doc = Image.findImage(id);
+		
+		// existuje vubec tento obrazek?
+		if(doc == null)
+			model.addAttribute("error_message", messageSource.getMessage("string_error_not_exist", null, Locale.ENGLISH));
+		else
+			model.addAttribute("image_url", "images/show/" + id);
+		
+		return "show";
 	}
 	
 	// TODO: tady je jenom int, pohlidat do budoucna meze
