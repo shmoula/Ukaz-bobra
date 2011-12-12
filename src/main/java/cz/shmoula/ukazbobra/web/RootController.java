@@ -91,13 +91,14 @@ public class RootController {
 				model.addAttribute("error_message", messageSource.getMessage("string_error_big_file", null, Locale.ENGLISH));
 			} else {
 				image.persist();
-				model.addAttribute("info_message", messageSource.getMessage("string_info_successfully_uploaded", null, Locale.ENGLISH));
+				model.addAttribute("info_message_key", "string_info_successfully_uploaded"); // predam dalsimu view key s hlaskou o uspechu
+				return "redirect:/" + image.getId();
 			}
 		} else
 			model.addAttribute("error_message", messageSource.getMessage("string_error_validation_problem", null, Locale.ENGLISH));
 
 		// primo zobrazim nahrany obrazek
-		return show(image.getId(), model);
+		return index(model);
 	}
 	
 	/**
@@ -107,8 +108,13 @@ public class RootController {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String show(@PathVariable("id") Long id, Model model) {
+	public String show(@PathVariable("id") Long id, @RequestParam(value="info_message_key", required=false) String info_message_key, Model model) {
 		Image doc = Image.findImage(id);
+		
+		try {
+		if(info_message_key != null)
+			model.addAttribute("info_message", messageSource.getMessage(info_message_key, null, Locale.ENGLISH));
+		} catch(Throwable e) {} // odchyceni nadavek, kdyz key neexistuje (ie uzivatel tam napsal nejakou hovadinu)
 		
 		// existuje vubec tento obrazek?
 		if(doc == null)
